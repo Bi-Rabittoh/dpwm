@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/dpwm
+dpwm.so
+dpwm.dylib
+dpwm.dll
+dpwm.a
+dpwm.lib
+dpwm-test-*
+*.exe
+*.o
+*.obj
+*.lst
+data.db
+dscanner.ini

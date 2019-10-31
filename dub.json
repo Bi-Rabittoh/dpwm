@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Marco Andronaco"
+	],
+	"copyright": "Copyright © 2019, Marco Andronaco",
+	"dependencies": {
+		"secured": "~>2.0.2"
+	},
+	"description": "A minimal and secure password manager in D.",
+	"license": "proprietary",
+	"name": "dpwm"
+}
