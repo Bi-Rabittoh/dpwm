@@ -2,6 +2,7 @@ import std.stdio;
 import std.file;
 import std.utf : byChar;
 import std.string;
+import secured.hash;
 import secured.symmetric;
 import std.json;
 import std.digest.md;
@@ -28,15 +29,17 @@ JSONValue decryptDB(string pw, string filename){
 
 
 void encryptDB(string pw, string content, string filename){
-		//write default data structure on DB
-		std.file.write(filename, cast(string) encrypt(string2MD5(pw), cast(ubyte[]) content, null));
+		//ubyte[] data =  encrypt(string2MD5(pw), cast(ubyte[]) content, null);
+		ubyte[] data =  encrypt_ex(string2MD5(pw), cast(ubyte[]) content, null, defaultChunkSize, SymmetricAlgorithm.ChaCha20_Poly1305, KdfAlgorithm.PBKDF2, defaultKdfIterations, defaultSCryptR, defaultSCryptP, HashAlgorithm.SHA2_512);
+		
+		std.file.write(filename, cast(string) data);
 }
 
 void main(){
 	const string inputFile = "data.db";
 
 	//welcome text
-	writeln("Welcome to my pw manager tool.\n");
+	writeln("Welcome to dpwm.\n");
 
 	string temp;
 	JSONValue db;
